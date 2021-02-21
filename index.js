@@ -7,6 +7,7 @@ const parser = Parser();
 
 // Reading inspection report file
 try {
+  // eslint-disable-next-line no-undef
   const reportFile = path.join(__dirname, Cli.getArg("file"));
   if (fs.existsSync(reportFile)) {
     var readStream = fs.createReadStream(reportFile, { encoding: "utf-8" });
@@ -42,6 +43,8 @@ try {
       // Do the process like comarison, adding, updating, ...
       console.log(`${result.length} vehicle have been processed`);
       console.log(`Process finished with ${errors.length} errors`);
+
+      // Do the comparision and update DB
     });
 
     readStream.on("error", () => {
